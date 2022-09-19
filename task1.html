@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Task 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style>
+    .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+#slider img {
+    position: absolute;
+    display: none;
+    border-radius: 3px;
+}
+#stop{
+    bottom: 10px;
+    padding: 5px 10px;
+    color: #000;
+    background: #FFF;
+    border-radius: 3px;
+    text-decoration: none;
+    opacity: 0.7;
+}
+#run{
+    bottom: 10px;
+    padding: 5px 10px;
+    color: #000;
+    background: #FFF;
+    border-radius: 3px;
+    text-decoration: none;
+    opacity: 0.7;
+}
+#run:hover{
+    
+    opacity: 1;
+    cursor: pointer;
+
+}
+#stop:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <div id="img">
+        <img id="imgplace" width="200px" height="300px">
+    </div>
+    <button id="stop">stop</button> -->
+    <div class="container">
+        <div id="slider">
+            <img src="imgsforTask1/img1.png" width="500px" height="300px"> 
+            <img src="imgsforTask1/img2.png" width="500px" height="300px"> 
+            <img src="imgsforTask1/img3.png" width="500px" height="300px">
+        </div>
+      
+        <button id="stop">Pause</button>
+        <button id="run">Run</button>
+    </div>
+    <script type="text/javascript"> 
+     $(function() {
+            var image = $("#slider img");
+            var numSlides = image.length;
+            var activeSlide = 0;
+            var speed = 2000;
+            var fade = 1000;
+            var pause;
+            var timer = setInterval(rotate, speed);
+            image.eq(activeSlide).show();
+
+            $("#stop").on('click',function() {
+                clearInterval(timer);
+                pause = true;
+            });
+            $('#run').on('click',function() {
+                timer = setInterval(rotate, speed);
+                pause = false;
+            });
+
+            function rotate() {
+                if (!pause == true) {
+                    activeSlide++;
+                }
+
+                if (activeSlide == numSlides) {
+                    activeSlide = 0;
+                }
+
+                if (activeSlide < 0) {
+                    activeSlide = numSlides - 1;
+                }
+
+                image.not(activeSlide).fadeOut(fade);
+                image.eq(activeSlide).fadeIn(fade);
+            }
+        });
+    // $(document).ready(function(){
+         
+        // var loop5 = setInterval(function(){
+        //    var loop= setInterval(function(){console.log('hello')},1);
+        //    clearInterval(loop);
+        //    var loop1 =setInterval(function(){
+        //       var $img= $("#imgplace").attr("src", "imgsforTask1/img1.png");
+        //       if( !!$img.length && $img[0].complete ) {
+        //      // clear the timer
+        //        clearInterval(loop1);
+        //          }
+        //      },30);
+        //     var loop2=setInterval(function(){
+        //         var $img= $("#imgplace").attr("src", "imgsforTask1/img2.png");
+        //         if( !!$img.length && $img[0].complete ) {
+        //      // clear the timer
+        //        clearInterval(loop2);
+        //          }
+        //     },30);
+        //     var loop3=setInterval(function(){
+        //         var $img= $("#imgplace").attr("src", "imgsforTask1/img3.png");
+        //         if( !!$img.length && $img[0].complete ) {
+        //      // clear the timer
+        //        clearInterval(loop3);
+        //          }
+        //     },30);
+        // },9000);
+
+        // $('#stop').click(function(){
+        // // flag=false;
+        // clearInterval(loop5);
+        // });       
+//      flag=true;
+//     while(flag){
+//         var loop2 = setInterval(function() {
+//              // the img to watch
+//             var $img= $("#imgplace").attr("src", "imgsforTask1/img2.png");
+         
+//          if( !!$img.length && $img[0].complete ) {
+//              // clear the timer
+//             clearInterval(loop2);
+//         }
+//     },2000);     
+//         var loop3 = setInterval(function() {
+//              // the img to watch
+//             var $img= $("#imgplace").attr("src", "imgsforTask1/img3.png");
+         
+//          if( !!$img.length && $img[0].complete ) {
+//              // clear the timer
+//             clearInterval(loop3);
+//     }
+//    }, 2000);  
+// var loop1= setInterval(function() {
+//              // the img to watch
+//             var $img= $("#imgplace").attr("src", "imgsforTask1/img1.png");
+         
+//          if( !!$img.length && $img[0].complete ) {
+//              // clear the timer
+//             clearInterval(loop1);
+// }
+// }, 2000); 
+//     }
+       
+//    $('#stop').click(function(){
+// flag=false;
+//    });
+           
+    // });
+    </script>
+</body>
+</html>
